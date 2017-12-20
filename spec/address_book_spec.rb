@@ -36,4 +36,27 @@
        expect(new_entry.email).to eq('augusta.king@lovelace.com')
      end
    end
+   
+   describe "#remove_entry" do
+     it "removes only one entry to the address book" do
+       book = AddressBook.new
+       book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+       book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+       book.remove_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+       expect(book.entries.size).to eq(1)
+     end
+     
+     it "removes the match" do
+       book = AddressBook.new
+       book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+       book.add_entry('Ada', '010.012.1815', 'augusta@lovelace.com')
+       book.remove_entry('Ada', '010.012.1815', 'augusta@lovelace.com')
+       entry = book.entries[0]
+ 
+       expect(entry.name).to eq('Ada Lovelace')
+       expect(entry.phone_number).to eq('010.012.1815')
+       expect(entry.email).to eq('augusta.king@lovelace.com')
+     end
+   end
+   
  end
