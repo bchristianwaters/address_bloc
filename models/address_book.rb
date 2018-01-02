@@ -48,4 +48,11 @@
  
      return nil
    end
+   
+   def iterative_search(name)
+     for i in 1..entries.length
+       return entries[i-1] if entries[i-1].name == name 
+     end
+     return nil
+   end
  end
