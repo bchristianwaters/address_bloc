@@ -15,6 +15,7 @@
      puts "4 - Import entries from a CSV"
      puts "5 - Exit"
      puts "6 - View Entry Number n" 
+     puts "7 - Destroy all entries"
      print "Enter your selection: "
  
       selection = gets.to_i
@@ -42,6 +43,10 @@
        when 6
          system "clear"
          view_entry_n
+         main_menu
+       when 7
+         system "clear"
+         nuke()
          main_menu
        else
          system "clear"
@@ -131,6 +136,10 @@
      puts "#{entry.name} has been deleted"
    end
   
+   def nuke()
+     address_book.nuke() 
+   end
+   
    def entry_submenu(entry)
      puts "n - next entry"
      puts "d - delete entry"
